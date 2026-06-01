@@ -1,0 +1,192 @@
+namespace TaleOfKaistania
+
+type EmotionalState =
+    | Normal
+    | Happy
+    | Pain
+
+module NupjukiRenderer =
+
+    /// Renders Nupjuki's head using clean, purely hardcoded static text fields
+    let drawNupjukiFace (hp: int) (maxHp: int) (outfitName: string) (emotion: EmotionalState) =
+        let hpPercent = (float hp / float maxHp) * 100.0
+        let outfitUpper = outfitName.ToUpper()
+
+        // 1. LAB COAT / GEAR SUB-TERMINAL VIEWS
+        if outfitUpper.Contains("LAB") || outfitUpper.Contains("COAT") then
+            if hp <= 0 then
+                printfn @"                  _______________________________________"
+                printfn @"            .----'  [======= SAFETY VISOR =======]  '----."
+                printfn @"         .-'                                              '-."
+                printfn @"        /                                                    \"
+                printfn @"       |          \     /                        \     /      |"
+                printfn @"       |             X                              X         |"
+                printfn @"       |          /     \                        /     \      |"
+                printfn @"        \                                                    /"
+                printfn @"         '-._                                            _.-'"
+                printfn @"             '------------------------------------------'"
+            elif emotion = Pain then
+                printfn @"                  _______________________________________"
+                printfn @"            .----'  [======= SAFETY VISOR =======]  '----."
+                printfn @"         .-'                                              '-."
+                printfn @"        /                                                    \"
+                printfn @"       |          _______                        _______      |"
+                printfn @"       |          / > < \                        / > < \      |"
+                printfn @"       |          ||   ||                        ||   ||      |"
+                printfn @"        \                                                    /"
+                printfn @"         '-._                                            _.-'"
+                printfn @"             '------------------------------------------'"
+            elif emotion = Happy then
+                printfn @"                  _______________________________________"
+                printfn @"            .----'  [======= SAFETY VISOR =======]  '----."
+                printfn @"         .-'                                              '-."
+                printfn @"        /                                                    \"
+                printfn @"       |          _______                        _______      |"
+                printfn @"       |          ^     ^                        ^     ^      |"
+                printfn @"       |          =======                        =======      |"
+                printfn @"        \                                                    /"
+                printfn @"         '-._                                            _.-'"
+                printfn @"             '------------------------------------------'"
+            elif hpPercent <= 25.0 then
+                printfn @"                  _______________________________________"
+                printfn @"            .----'  [======= SAFETY VISOR =======]  '----."
+                printfn @"         .-'                                              '-."
+                printfn @"        /                                                    \"
+                printfn @"       |           .-----.                        .-----.     |"
+                printfn @"       |           |  @  |                        |  @  |     |"
+                printfn @"       |           '-----'                        '-----'     |"
+                printfn @"        \                                                    /"
+                printfn @"         '-._                                            _.-'"
+                printfn @"             '------------------------------------------'"
+            else
+                printfn @"                  _______________________________________"
+                printfn @"            .----'  [======= SAFETY VISOR =======]  '----."
+                printfn @"         .-'                                              '-."
+                printfn @"        /                                                    \"
+                printfn @"       |           .-----.                        .-----.     |"
+                printfn @"       |           |  o  |                        |  o  |     |"
+                printfn @"       |           '-----'                        '-----'     |"
+                printfn @"        \                                                    /"
+                printfn @"         '-._                                            _.-'"
+                printfn @"             '------------------------------------------'"
+
+        // 2. OVERALLS SUB-TERMINAL VIEWS
+        elif outfitUpper.Contains("OVERALL") then
+            if hp <= 0 then
+                printfn @"                        ________________________"
+                printfn @"                    .---|   SAFETY FIRST HAT   |---."
+                printfn @"              .----'    '----------------------'    '----."
+                printfn @"           .-'                                              '-."
+                printfn @"          /                                                    \"
+                printfn @"         |          \     /                        \     /      |"
+                printfn @"         |             X                              X         |"
+                printfn @"         |          /     \                        /     \      |"
+                printfn @"          \                                                    /"
+                printfn @"           '-._                                            _.-'"
+                printfn @"               '------------------------------------------'"
+            elif emotion = Pain then
+                printfn @"                        ________________________"
+                printfn @"                    .---|   SAFETY FIRST HAT   |---."
+                printfn @"              .----'    '----------------------'    '----."
+                printfn @"           .-'                                              '-."
+                printfn @"          /                                                    \"
+                printfn @"         |          _______                        _______      |"
+                printfn @"         |          / > < \                        / > < \      |"
+                printfn @"         |          ||   ||                        ||   ||      |"
+                printfn @"          \                                                    /"
+                printfn @"           '-._                                            _.-'"
+                printfn @"               '------------------------------------------'"
+            elif emotion = Happy then
+                printfn @"                        ________________________"
+                printfn @"                    .---|   SAFETY FIRST HAT   |---."
+                printfn @"              .----'    '----------------------'    '----."
+                printfn @"           .-'                                              '-."
+                printfn @"          /                                                    \"
+                printfn @"         |          _______                        _______      |"
+                printfn @"         |          ^     ^                        ^     ^      |"
+                printfn @"         |          =======                        =======      |"
+                printfn @"          \                                                    /"
+                printfn @"           '-._                                            _.-'"
+                printfn @"               '------------------------------------------'"
+            elif hpPercent <= 25.0 then
+                printfn @"                        ________________________"
+                printfn @"                    .---|   SAFETY FIRST HAT   |---."
+                printfn @"              .----'    '----------------------'    '----."
+                printfn @"           .-'                                              '-."
+                printfn @"          /                                                    \"
+                printfn @"         |          .-----.                        .-----.      |"
+                printfn @"         |          |  @  |                        |  @  |      |"
+                printfn @"         |          '-----'                        '-----'      |"
+                printfn @"          \                                                    /"
+                printfn @"           '-._                                            _.-'"
+                printfn @"               '------------------------------------------'"
+            else
+                printfn @"                        ________________________"
+                printfn @"                    .---|   SAFETY FIRST HAT   |---."
+                printfn @"              .----'    '----------------------'    '----."
+                printfn @"           .-'                                              '-."
+                printfn @"          /                                                    \"
+                printfn @"         |          .-----.                        .-----.      |"
+                printfn @"         |          |  o  |                        |  o  |      |"
+                printfn @"         |          '-----'                        '-----'      |"
+                printfn @"          \                                                    /"
+                printfn @"           '-._                                            _.-'"
+                printfn @"               '------------------------------------------'"
+
+        // 3. BASIC UNIFORM SUB-TERMINAL VIEWS
+        else
+            if hp <= 0 then
+                printfn @"                  ____________________________________"
+                printfn @"            .----'                                    '----."
+                printfn @"         .-'                                                '-."
+                printfn @"        /                                                      \"
+                printfn @"       |          \     /                        \     /        |"
+                printfn @"       |             X                              X           |"
+                printfn @"       |          /     \                        /     \        |"
+                printfn @"        \                                                      /"
+                printfn @"         '-._                                              _.-'"
+                printfn @"             '--------------------------------------------'"
+            elif emotion = Pain then
+                printfn @"                  ____________________________________"
+                printfn @"            .----'                                    '----."
+                printfn @"         .-'                                                '-."
+                printfn @"        /                                                      \"
+                printfn @"       |          _______                        _______        |"
+                printfn @"       |          / > < \                        / > < \        |"
+                printfn @"       |          ||   ||                        ||   ||        |"
+                printfn @"        \                                                      /"
+                printfn @"         '-._                                              _.-'"
+                printfn @"             '--------------------------------------------'"
+            elif emotion = Happy then
+                printfn @"                  ____________________________________"
+                printfn @"            .----'                                    '----."
+                printfn @"         .-'                                                '-."
+                printfn @"        /                                                      \"
+                printfn @"       |          _______                        _______        |"
+                printfn @"       |          / > < \                        / > < \        |"
+                printfn @"       |          ||   ||                        ||   ||        |"
+                printfn @"        \                                                      /"
+                printfn @"         '-._                                              _.-'"
+                printfn @"             '--------------------------------------------'"
+            elif hpPercent <= 25.0 then
+                printfn @"                  ____________________________________"
+                printfn @"            .----'                                    '----."
+                printfn @"         .-'                                                '-."
+                printfn @"        /                                                      \"
+                printfn @"       |          .-----.                        .-----.        |"
+                printfn @"       |          |  @  |                        |  @  |        |"
+                printfn @"       |          '-----'                        '-----'        |"
+                printfn @"        \                                                      /"
+                printfn @"         '-._                                              _.-'"
+                printfn @"             '--------------------------------------------'"
+            else
+                printfn @"                  ____________________________________"
+                printfn @"            .----'                                    '----."
+                printfn @"         .-'                                                '-."
+                printfn @"        /                                                      \"
+                printfn @"       |          .-----.                        .-----.        |"
+                printfn @"       |          |  o  |                        |  o  |        |"
+                printfn @"       |          '-----'                        '-----'        |"
+                printfn @"        \                                                      /"
+                printfn @"         '-._                                              _.-'"
+                printfn @"             '--------------------------------------------'"
